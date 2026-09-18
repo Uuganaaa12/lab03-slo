@@ -86,3 +86,23 @@ node server.js
 - Report: 200-400 ms санамсаргүй хүлээдэг тул p95 нь онолоороо 390 ms (baseline 388.77 ms), 30 ms нөөц нэмж 420 ms.
 
 Error budget (цагаар): 2 мин * (1 - 0.90) = 12 секунд зогсох эрхтэй.
+
+## PASS
+
+[slo-test.js](slo-test.js) дотор endpoint бүрийг name tag-аар ялгаж threshold тавьсан. Босгууд дээрх SLO хүснэгттэй ижил.
+
+```bash
+k6 run --no-color slo-test.js > results/pass.txt 2>&1
+```
+
+Гаралт: [results/pass.txt](results/pass.txt), exit code 0.
+
+| Threshold | Үр дүн |
+|---|---|
+| cart p(95)<10 | 1.87 ms PASS |
+| cart p(99)<20 | 3.63 ms PASS |
+| pay rate<0.075 | 5.69% PASS |
+| checks rate>=0.90 | 98.10% PASS |
+| report p(95)<420 | 390.57 ms PASS |
+
+`server_responded` бол threshold биш, сервер хариу өгсөн эсэхийг (500 ч хамаагүй) тоолох гэж нэмсэн metric. Chaos дээр ашигласан.
