@@ -1,0 +1,17 @@
+{
+  "name": "lab03-slo",
+  "version": "1.0.0",
+  "description": "Lab03 SLO k6",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "k6 run slo-test.js"
+  },
+  "keywords": [],
+  "author": "D.Uuganbayar (b232270004)",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
