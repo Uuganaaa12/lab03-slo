@@ -1,0 +1,13 @@
+Lab03 chaos turshiltiin tsagiin shugam
+==============================================================
+Uil yavdal                                   Tsag k6-ees hoish
+k6 ehelsen                           16:05:00.513      0.000 s
+SIGINT ilgeesen (= Ctrl+C)           16:05:40.615     40.102 s
+server hariulahgui bolson            16:05:40.660     40.147 s
+node server.js dahin ajilluulsan     16:05:50.731     50.218 s
+anhny amjilttai hariu (HTTP 200)     16:05:50.989     50.476 s
+k6 duussan                           16:07:02.563    122.050 s
+==============================================================
+Sergeh hugatsaa (SIGINT -> anhny 200):  10.374 s
+Dahin asahad zartsuulsan (start -> 200): 0.258 s
+k6 exit code: 99
