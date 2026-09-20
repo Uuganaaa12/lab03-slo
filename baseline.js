@@ -1,19 +1,16 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-// SLO тавихаас өмнө бодит тоог харах гэж ажиллуулсан (slo-test.js-тэй ижил ачаалал).
-// k6 tag-тай metric-ийг зөвхөн threshold-той үед хэвлэдэг тул >=0 гэж үргэлж биелэх босго тавьсан.
+// Зааврын жишээ босгоор эхлээд ажиллуулж, өөрийн системийн бодит тоог харсан.
 export const options = {
   vus: 20,
   duration: '1m',
   summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(90)', 'p(95)', 'p(99)'],
   thresholds: {
-    'http_req_duration{name:cart}': ['p(95)>=0'],
-    'http_req_duration{name:report}': ['p(95)>=0'],
-    'http_req_duration{name:pay}': ['p(95)>=0'],
-    'http_req_failed{name:cart}': ['rate>=0'],
-    'http_req_failed{name:report}': ['rate>=0'],
-    'http_req_failed{name:pay}': ['rate>=0'],
+    'http_req_duration{name:cart}': ['p(95)<200'],
+    'http_req_failed{name:pay}': ['rate<0.08'],
+    'checks': ['rate>0.90'],
+    'http_req_duration{name:report}': ['p(95)<450'],
   },
 };
 
